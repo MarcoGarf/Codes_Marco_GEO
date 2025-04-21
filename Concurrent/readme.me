@@ -1,0 +1,26 @@
+## Seismic Data Download & Processing Automation
+
+This folder contains Python scripts that automate the end-to-end workflow of downloading seismic SAC data from IRIS/FDSN services, processing it (e.g., applying filters, detecting triggers), and visualizing results.
+
+---
+
+###  Scripts Overview
+
+| Script | Purpose |
+|--------|---------|
+| `downloader2.py` | Downloads SAC data by the hour from IRIS using multiprocessing (parallel threads), saving to `/Volumes/Marco/...`. |
+| `downloadFiles.py` | Downloads daily SAC data for March 2022 from IRIS and extracts it. |
+| `downloadFiles 2.py` | Variant of `downloadFiles.py` with adjusted paths and date logic. |
+| `single.py` | Sequential script for downloading hourly SAC data from 2020–2023 from a UTEXAS server (`rtserve.beg.utexas.edu`). |
+| `test.py` | Multiprocessing download script (Jan 2025). Includes enhanced logging and retry handling. |
+| `seismicPipeline.py` | Full pipeline: downloads monthly SAC data, applies high-pass filters, detects STA/LTA triggers, logs results to CSV, and optionally plots monthly trigger totals. |
+| `test_part2.py` | Reads downloaded SAC files, applies filtering and STA/LTA trigger detection, and appends trigger info to `trigger_info.csv`. |
+| `test_part3.py` | Visualizes monthly trigger totals from `trigger_info.csv` using matplotlib bar charts. |
+
+---
+
+###  How to Run
+
+1. **Install the required libraries**:
+```bash
+pip install obspy pandas matplotlib requests
